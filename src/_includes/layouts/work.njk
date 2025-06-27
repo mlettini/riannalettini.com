@@ -1,0 +1,50 @@
+{% extends 'layouts/base.njk' %}
+
+{% block header_content %}
+  <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+  <section>
+    <div class="inner">
+      <h1>Work</h1>
+      <p>I’ve spent the last 11 years of my career <a href="https://www.getharvest.com/blog/author/matthew-lettini" target="_blank" rel="noopener">improving Harvest</a>. In that time I’ve worked on just about everything—the core functionality, all new products and apps, big feature flows, tons of small UX iterations, the design system, and even swag… too much to list in a portfolio. So here’s just a brief selection of highlights I’m proud to have helped bring to life during my tenure:</p>
+
+      {{ content | safe }}
+
+      <ol class="project-list">
+        {% for post in collections.harvest_work %}
+          <li>
+            <a href="{{ post.url }}" class="project">
+              {# <img src="{{ post.data.image }}" alt=""> #}
+              <div>
+                <h2>{{ post.data.title }}</h2>
+                <span>{{ post.data.subtitle }}</span>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="inner">
+      <p>I’m also proud of these other things I worked on prior to joining Harvest:</p>
+
+      <ol class="project-list">
+        {% for post in collections.older_work %}
+          <li>
+            <a href="{{ post.url }}" class="project">
+              {# <img src="{{ post.data.image }}" alt=""> #}
+              <div>
+                <h2>{{ post.data.title }}</h2>
+                <span>{{ post.data.subtitle }}</span>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+{% endblock %}

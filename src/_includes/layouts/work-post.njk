@@ -1,0 +1,46 @@
+{% extends 'layouts/base.njk' %}
+
+{% block header_content %}
+  <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+  <header class="post-header">
+    <div class="inner">
+      <h1>{{ title }}</h1>
+      <span>{{ subtitle }}</span>
+    </div>
+  </header>
+
+  <section class="post">
+    {{ content | safe }}
+  </section>
+
+  <section class="do-not-print">
+    <nav class="inner" aria-label="work">
+      <ul class="post-nav">
+
+        <li class="previous">
+          {% if prevPost.url %}
+            <span>← Previous</span>
+            <a href="{{ prevPost.url }}">{{ prevPost.data.title }}</a>
+          {% else %}
+            <span>← Back</span>
+            <a href="/work">All Work</a>
+          {% endif %}
+        </li>
+
+        <li class="next">
+          {% if nextPost.url %}
+            <span>Next →</span>
+            <a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+          {% else %}
+            <span>Back →</span>
+            <a href="/work">All Work</a>
+          {% endif %}
+        </li>
+
+      </ul>
+    </nav>
+  </section>
+{% endblock %}

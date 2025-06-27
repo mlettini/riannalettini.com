@@ -1,0 +1,28 @@
+{% extends 'layouts/base.njk' %}
+
+{% block header_content %}
+  <meta name="robots" content="noindex">
+{% endblock %}
+
+{% block content %}
+  <section>
+    <div class="inner">
+      <h1>{{ title }}</h1>
+      {{ content | safe }}
+    </div>
+  </section>
+
+  <section>
+    <div class="inner">
+      <ol>
+        {% for post in collections.posts %}
+    {#  {% for post in collections.recent_posts %}  #}
+          <li>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            <time>{{ post.date | dateFilterShorthand }}</time>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+{% endblock %}
